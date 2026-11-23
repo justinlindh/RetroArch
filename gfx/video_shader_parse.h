@@ -448,7 +448,9 @@ enum video_shader_cache_kind
    VIDEO_SHADER_CACHE_SPIRV = 0,
    VIDEO_SHADER_CACHE_ORBIS_BINARY,
    /* The Vulkan driver's VkPipelineCache blob, one entry per GPU */
-   VIDEO_SHADER_CACHE_VULKAN_PIPELINE
+   VIDEO_SHADER_CACHE_VULKAN_PIPELINE,
+   /* D3DCompile's bytecode for one HLSL source, entry point and target */
+   VIDEO_SHADER_CACHE_D3D_BLOB
 };
 
 /* A cache entry's bytes, read-only, until video_shader_cache_unmap() */

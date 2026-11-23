@@ -1104,6 +1104,7 @@ static bool video_shader_cache_path(enum video_shader_cache_kind kind,
    {
       case VIDEO_SHADER_CACHE_SPIRV:
       case VIDEO_SHADER_CACHE_VULKAN_PIPELINE:
+      case VIDEO_SHADER_CACHE_D3D_BLOB:
          {
             settings_t *settings = config_get_ptr();
             if (!settings || !*settings->paths.directory_cache)
@@ -1113,6 +1114,12 @@ static bool video_shader_cache_path(enum video_shader_cache_kind kind,
                fill_pathname_join_special(dir,
                      settings->paths.directory_cache, "spirv", dir_len);
                suffix = ".spirv";
+            }
+            else if (kind == VIDEO_SHADER_CACHE_D3D_BLOB)
+            {
+               fill_pathname_join_special(dir,
+                     settings->paths.directory_cache, "d3dblob", dir_len);
+               suffix = ".dxbc";
             }
             else
             {
